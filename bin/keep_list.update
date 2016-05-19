@@ -1,0 +1,10 @@
+hosts
+http_dns
+sensor_bad_pixel
+autorun_enable
+upgrade_flag
+camera_config
+SNIP39/SNIP39_UID.conf
+SNIP39/wpa_supplicant.conf
+SNIP39/wifi_info
+SNIP39/default.conf

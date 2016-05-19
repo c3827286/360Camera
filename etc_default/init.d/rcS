@@ -1,0 +1,16 @@
+#! /bin/sh
+
+mount -t tmpfs tmpfs /var
+mount -t tmpfs tmpfs /tmp
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+mknod /dev/ttyS000 c 204 64
+
+mkdir -p /var/tmp
+mkdir -p /var/log
+mkdir -p /var/lock/subsys
+mkdir -p /var/run
+
+/usr/bin/snx_rst -n
+
+/etc/init.d/rc.local

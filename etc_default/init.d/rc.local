@@ -1,0 +1,33 @@
+#! /bin/sh
+
+date -s 2015-11-01
+export TZ=GMT-8
+hwclock -t
+
+ulimit -s 512
+
+syslogd -s 256
+klogd
+
+/usr/bin/wifi_reset
+
+cd /lib/modules/
+./load3518e -i ov9712
+insmod extdrv/8188eu.ko
+insmod extdrv/gpio.ko
+insmod extdrv/wdt.ko
+insmod extdrv/hi_adc.ko
+insmod extdrv/AW8733A.ko
+insmod extdrv/exfat_core.ko
+insmod extdrv/exfat_fs.ko
+
+cd /tmp
+
+sleep 1
+
+echo "/sbin/mdev" > /proc/sys/kernel/hotplug
+/sbin/mdev -s
+
+/usr/bin/sd_log_enable.sh &
+
+/usr/bin/360.sh &

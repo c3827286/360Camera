@@ -1,0 +1,1 @@
+# nvram_set UID  `cat /tmp/mmcblk0p1/SNIP39_UID.conf`
